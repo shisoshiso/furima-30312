@@ -22,3 +22,73 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+# テーブル設計
+
+## users テーブル
+
+| Column                | Type   | Options     |
+| --------------------- | ------ | ----------- |
+| nickname              | string | null: false |
+| email                 | string | null: false, unique: true |
+| password              | string | null: false |
+| password_confirmation | string | null: false |
+| first_name            | string | null: false |
+| last_name             | string | null: false |
+| first_name_kana       | string | null: false |
+| last_name_kana        | string | null: false |
+| birthday              | datetime | null: false |
+
+### Association
+
+- has_many :products
+- has_many :buy_logs
+- has_one  :address
+
+## products テーブル
+
+| Column           | Type   | Options     |
+| ---------------- | ------ | ----------- |
+| title            | string | null: false |
+| description      | text   | null: false |
+| category         | string | null: false |
+| product_status   | string | null: false |
+| delivery_fee     | string | null: false |
+| ship_from_area   | string | null: false |
+| days_to_delivery | string | null: false |
+| price            | string | null: false |
+| price_range      | string | null: false |
+| seller_user_id   | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- has_one :buy_log
+
+## addresses テーブル
+
+| Column         | Type   | Options     |
+| -------------- | ------ | ----------- |
+| postal_code    | string | null: false |
+| prefecture     | string | null: false |
+| municipalities | string | null: false |
+| house_number   | string | null: false |
+| tel_number     | string | null: false |
+
+### Association
+
+- belongs_to :user
+- belongs_to :buy_log
+
+## buy_logs テーブル
+
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| buy_user_id   | references | null: false, foreign_key: true |
+| product_id    | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :product
+- has_one :address
