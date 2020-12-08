@@ -27,16 +27,16 @@ Things you may want to cover:
 
 ## users テーブル
 
-| Column                | Type   | Options     |
-| --------------------- | ------ | ----------- |
-| nickname              | string | null: false |
-| email                 | string | null: false, unique: true |
-| encrypted_password      | string | null: false |
-| first_name            | string | null: false |
-| last_name             | string | null: false |
-| first_name_kana       | string | null: false |
-| last_name_kana        | string | null: false |
-| birthday              | date | null: false |
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| nickname           | string | null: false               |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| first_name         | string | null: false               |
+| last_name          | string | null: false               |
+| first_name_kana    | string | null: false               |
+| last_name_kana     | string | null: false               |
+| birthday           | date   | null: false               |
 
 ### Association
 
@@ -46,18 +46,18 @@ Things you may want to cover:
 
 ## products テーブル
 
-| Column           | Type   | Options     |
-| ---------------- | ------ | ----------- |
-| title            | string | null: false |
-| description      | text   | null: false |
-| category         | string | null: false |
-| product_status   | string | null: false |
-| delivery_fee     | string | null: false |
-| ship_from_area   | string | null: false |
-| days_to_delivery | string | null: false |
-| price            | string | null: false |
-| price_range      | string | null: false |
-| seller_user_id   | references | null: false, foreign_key: true |
+| Column              | Type       | Options                        |
+| ------------------- | ---------- | ------------------------------ |
+| title               | string     | null: false                    |
+| description         | text       | null: false                    |
+| category_id         | integer    | null: false                    |
+| product_status_id   | integer    | null: false                    |
+| delivery_fee_id     | integer    | null: false                    |
+| ship_from_area_id   | integer    | null: false                    |
+| days_to_delivery_id | integer    | null: false                    |
+| price               | integer    | null: false                    |
+| price_range         | string     | null: false                    |
+| user                | references | null: false, foreign_key: true |
 
 ### Association
 
