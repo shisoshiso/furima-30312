@@ -82,10 +82,10 @@ Things you may want to cover:
 
 ## buy_logs テーブル
 
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| buy_user_id   | references | null: false, foreign_key: true |
-| product_id    | references | null: false, foreign_key: true |
+| Column   | Type       | Options                        |
+| -------- | ---------- | ------------------------------ |
+| buy_user | references | null: false, foreign_key: true |
+| product  | references | null: false, foreign_key: true |
 
 ### Association
 
