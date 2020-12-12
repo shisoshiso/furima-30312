@@ -42,7 +42,6 @@ Things you may want to cover:
 
 - has_many :products
 - has_many :buy_logs
-- has_one  :address
 
 ## products テーブル
 
@@ -56,7 +55,6 @@ Things you may want to cover:
 | ship_from_area_id   | integer    | null: false                    |
 | days_to_delivery_id | integer    | null: false                    |
 | price               | integer    | null: false                    |
-| price_range         | string     | null: false                    |
 | user                | references | null: false, foreign_key: true |
 
 ### Association
@@ -66,18 +64,18 @@ Things you may want to cover:
 
 ## addresses テーブル
 
-| Column         | Type    | Options     |
-| -------------- | ------- | ----------- |
-| postal_code    | string  | null: false |
-| prefecture_id  | integer | null: false |
-| municipalities | string  | null: false |
-| house_number   | string  | null: false |
-| tel_number     | string  | null: false |
-| building       | string  |             |
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| postal_code    | string     | null: false                    |
+| prefecture_id  | integer    | null: false                    |
+| municipalities | string     | null: false                    |
+| house_number   | string     | null: false                    |
+| tel_number     | string     | null: false                    |
+| building       | string     |                                |
+| buy_log        | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :user
 - belongs_to :buy_log
 
 ## buy_logs テーブル
