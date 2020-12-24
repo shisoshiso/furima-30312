@@ -5,9 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   validates :nickname, presence: true
-  validates :email, uniqueness: true
-  VALID_PASSWORD_REGEX = /\A[a-zA-Z0-9]+\z/
-  validates :password, presence: true, format: { with: VALID_PASSWORD_REGEX,message: "は半角英数字混合で、6文字以上での入力が必要です"}
+  VALID_PASSWORD_REGEX = /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]/
+  validates :password, format: { with: VALID_PASSWORD_REGEX, message: "は半角英数字混合での入力が必要です"}
   VALID_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/
   validates :first_name, presence: true, format: { with: VALID_NAME_REGEX, message: "は全角（漢字・平仮名・カタカナ）での入力が必要です"}
   validates :last_name, presence: true, format: { with: VALID_NAME_REGEX, message: "は全角（漢字・平仮名・カタカナ）での入力が必要です"}
