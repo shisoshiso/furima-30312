@@ -10,7 +10,7 @@ class Item < ApplicationRecord
   belongs_to :days_to_delivery
 
   with_options presence: true do
-    validates :title, unless: :was_attached?
+    validates :title
     validates :description
     validates :price, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than: 10000000}
   end
@@ -23,7 +23,4 @@ class Item < ApplicationRecord
     validates :days_to_delivery_id
   end
 
-  def was_attached?
-    self.image.attached?
-  end
 end
