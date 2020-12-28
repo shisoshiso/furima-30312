@@ -4,14 +4,15 @@ RSpec.describe Item, type: :model do
     before do
       @item = FactoryBot.build(:item)
     end
-    
-    context "itemが保存できる場合" do
-      it 'titleとimage,description,category_id,item_status_id,delivery_fee_id,ship_from_area_id,days_to_delivery_id,price,userが存在していれば保存できること' do
+
+    context 'itemが保存できる場合' do
+      it 'titleとimage,description,category_id,item_status_id,delivery_fee_id,ship_from_area_id,
+          days_to_delivery_id,price,userが存在していれば保存できること' do
         expect(@item).to be_valid
       end
     end
-    
-    context "itemが保存できない場合" do
+
+    context 'itemが保存できない場合' do
       it 'titleが空では保存できないこと' do
         @item.title = nil
         @item.valid?
@@ -55,7 +56,7 @@ RSpec.describe Item, type: :model do
       it 'userが紐付いていないと保存できないこと' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("User must exist")
+        expect(@item.errors.full_messages).to include('User must exist')
       end
     end
   end

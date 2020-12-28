@@ -8,4 +8,3 @@ class ApplicationController < ActionController::Base
                                                        :first_name_kana, :last_name_kana, :birthday])
   end
 end
-
