@@ -40,17 +40,17 @@ Things you may want to cover:
 
 ### Association
 
-- has_many :products
+- has_many :items
 - has_many :buy_logs
 
-## products テーブル
+## items テーブル
 
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
 | title               | string     | null: false                    |
 | description         | text       | null: false                    |
 | category_id         | integer    | null: false                    |
-| product_status_id   | integer    | null: false                    |
+| item_status_id      | integer    | null: false                    |
 | delivery_fee_id     | integer    | null: false                    |
 | ship_from_area_id   | integer    | null: false                    |
 | days_to_delivery_id | integer    | null: false                    |
@@ -83,10 +83,10 @@ Things you may want to cover:
 | Column   | Type       | Options                        |
 | -------- | ---------- | ------------------------------ |
 | user     | references | null: false, foreign_key: true |
-| product  | references | null: false, foreign_key: true |
+| item     | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- belongs_to :product
+- belongs_to :item
 - has_one :address
