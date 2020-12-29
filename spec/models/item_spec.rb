@@ -36,7 +36,7 @@ RSpec.describe Item, type: :model do
       it 'categoryが---では保存できないこと' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category must be other than 1")
+        expect(@item.errors.full_messages).to include('Category must be other than 1')
       end
       it 'item_statusが空では保存できないこと' do
         @item.item_status_id = nil
@@ -46,7 +46,7 @@ RSpec.describe Item, type: :model do
       it 'item_statusが---では保存できないこと' do
         @item.item_status_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Item status must be other than 1")
+        expect(@item.errors.full_messages).to include('Item status must be other than 1')
       end
       it 'delivery_feeが空では保存できないこと' do
         @item.delivery_fee_id = nil
@@ -56,7 +56,7 @@ RSpec.describe Item, type: :model do
       it 'delivery_feeが---では保存できないこと' do
         @item.delivery_fee_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery fee must be other than 1")
+        expect(@item.errors.full_messages).to include('Delivery fee must be other than 1')
       end
       it 'ship_from_areaが空では保存できないこと' do
         @item.ship_from_area_id = nil
@@ -66,7 +66,7 @@ RSpec.describe Item, type: :model do
       it 'ship_from_areaが---では保存できないこと' do
         @item.ship_from_area_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Ship from area must be other than 1")
+        expect(@item.errors.full_messages).to include('Ship from area must be other than 1')
       end
       it 'days_to_deliveryが空では保存できないこと' do
         @item.days_to_delivery_id = nil
@@ -76,7 +76,7 @@ RSpec.describe Item, type: :model do
       it 'days_to_deliveryが---では保存できないこと' do
         @item.days_to_delivery_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Days to delivery must be other than 1")
+        expect(@item.errors.full_messages).to include('Days to delivery must be other than 1')
       end
       it 'priceが空では保存できないこと' do
         @item.price = nil
@@ -84,19 +84,19 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
       it 'priceが半角数字でないと保存できないこと' do
-        @item.price = "２２２"
+        @item.price = '２２２'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
       it 'priceが299円以下では保存できないこと' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
+        expect(@item.errors.full_messages).to include('Price must be greater than or equal to 300')
       end
       it 'priceが10,000,000円以上では保存できないこと' do
-        @item.price = 10000000
+        @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be less than 10000000")
+        expect(@item.errors.full_messages).to include('Price must be less than 10000000')
       end
       it 'userが紐付いていないと保存できないこと' do
         @item.user = nil
