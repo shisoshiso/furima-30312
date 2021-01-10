@@ -4,7 +4,7 @@ RSpec.describe BuyLogAddress, type: :model do
     before do
       @buy_log_address = FactoryBot.build(:buy_log_address)
     end
-    
+
     context '配送先の情報が保存できる場合' do
       it '全ての値が正しく入力されていれば保存できること' do
         expect(@buy_log_address).to be_valid
@@ -19,12 +19,12 @@ RSpec.describe BuyLogAddress, type: :model do
       it 'postal_codeが空では保存できないこと' do
         @buy_log_address.postal_code = nil
         @buy_log_address.valid?
-        expect(@buy_log_address.errors.full_messages).to include("Postal code can't be blank", "Postal code is invalid. Include hyphen(-)")
+        expect(@buy_log_address.errors.full_messages).to include("Postal code can't be blank", 'Postal code is invalid. Include hyphen(-)')
       end
       it 'postal_codeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
         @buy_log_address.postal_code = '1234567'
         @buy_log_address.valid?
-        expect(@buy_log_address.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+        expect(@buy_log_address.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
       end
       it 'prefectureが空では保存できないこと' do
         @buy_log_address.prefecture_id = nil
@@ -54,17 +54,17 @@ RSpec.describe BuyLogAddress, type: :model do
       it 'tel_numberが11桁の数字でないと保存できないこと' do
         @buy_log_address.tel_number = '1234567890'
         @buy_log_address.valid?
-        expect(@buy_log_address.errors.full_messages).to include("Tel number is invalid. Input only number")
+        expect(@buy_log_address.errors.full_messages).to include('Tel number is invalid. Input only number')
       end
       it 'tel_numberがハイフンを含むと保存できないこと' do
         @buy_log_address.tel_number = '123-4567-8910'
         @buy_log_address.valid?
-        expect(@buy_log_address.errors.full_messages).to include("Tel number is invalid. Input only number")
+        expect(@buy_log_address.errors.full_messages).to include('Tel number is invalid. Input only number')
       end
       it 'tel_numberが全角数字では保存できないこと' do
         @buy_log_address.tel_number = '１２３４５６７８９１０'
         @buy_log_address.valid?
-        expect(@buy_log_address.errors.full_messages).to include("Tel number is invalid. Input only number")
+        expect(@buy_log_address.errors.full_messages).to include('Tel number is invalid. Input only number')
       end
       it 'user_idが空では保存できないこと' do
         @buy_log_address.user_id = nil
