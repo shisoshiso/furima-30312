@@ -1,10 +1,11 @@
 class BuyLogsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :move_to_index, only: [:index]
+  before_action :sold_out_index, only: [:index]
 
   def index
-    @buy_log_address = BuyLogAddress.new
     @item = Item.find(params[:item_id])
+    @buy_log_address = BuyLogAddress.new
   end
 
   def create
@@ -28,6 +29,11 @@ class BuyLogsController < ApplicationController
   def move_to_index
     @item = Item.find(params[:item_id])
     redirect_to root_path if current_user.id == @item.user_id
+  end
+
+  def sold_out_index
+    @item = Item.find(params[:item_id])
+    redirect_to root_path if @item.buy_log.present?
   end
 
   def pay_item
