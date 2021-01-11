@@ -98,7 +98,7 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Price must be less than 10000000')
       end
-      it 'userが紐付いていないと保存できないこと' do
+      it 'userが紐付いていないと保存できないこと' do   # アソシエーションについてテストしている
         @item.user = nil
         @item.valid?
         expect(@item.errors.full_messages).to include('User must exist')
