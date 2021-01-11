@@ -51,8 +51,8 @@ RSpec.describe BuyLogAddress, type: :model do
         @buy_log_address.valid?
         expect(@buy_log_address.errors.full_messages).to include("Tel number can't be blank")
       end
-      it 'tel_numberが11桁の数字でないと保存できないこと' do
-        @buy_log_address.tel_number = '1234567890'
+      it 'tel_numberが10桁もしくは11桁の数字でないと保存できないこと' do
+        @buy_log_address.tel_number = '123456789'
         @buy_log_address.valid?
         expect(@buy_log_address.errors.full_messages).to include('Tel number is invalid. Input only number')
       end

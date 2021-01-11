@@ -7,7 +7,7 @@ class BuyLogAddress
     validates :prefecture_id, numericality: { other_than: 1 }
     validates :municipalities
     validates :house_number
-    validates :tel_number, format: { with: /\A\d{11}\z/, message: 'is invalid. Input only number' }
+    validates :tel_number, format: { with: /\A\d{10,11}\z/, message: 'is invalid. Input only number' }
     validates :user_id  # user_id,item_idが空になるケースは珍しいが,予期せぬエラーを予防
     validates :item_id
     validates :token  # クレジットカード情報に不備があると購入記録が保存されない様にする
