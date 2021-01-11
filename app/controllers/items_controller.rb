@@ -57,7 +57,6 @@ class ItemsController < ApplicationController
   end
 
   def sold_out_index
-    @item = Item.find(params[:id])
     redirect_to root_path if @item.buy_log.present?
   end
 end

@@ -4,7 +4,6 @@ class BuyLogsController < ApplicationController
   before_action :sold_out_index, only: [:index]
 
   def index
-    @item = Item.find(params[:item_id])
     @buy_log_address = BuyLogAddress.new
   end
 
