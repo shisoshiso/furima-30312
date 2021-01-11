@@ -10,7 +10,7 @@ class BuyLogAddress
     validates :tel_number, format: { with: /\A\d{11}\z/, message: 'is invalid. Input only number' }
     validates :user_id  # user_id,item_idが空になるケースは珍しいが,予期せぬエラーを予防
     validates :item_id
-    validates :token  #クレジットカード情報に不備があると購入記録が保存されない様にする
+    validates :token  # クレジットカード情報に不備があると購入記録が保存されない様にする
   end
 
   def save
