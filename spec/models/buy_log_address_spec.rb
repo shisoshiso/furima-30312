@@ -71,10 +71,15 @@ RSpec.describe BuyLogAddress, type: :model do
         @buy_log_address.valid?
         expect(@buy_log_address.errors.full_messages).to include("User can't be blank")
       end
-      it 'item_idが紐付いていないと保存できないこと' do
+      it 'item_idが空では保存できないこと' do
         @buy_log_address.item_id = nil
         @buy_log_address.valid?
         expect(@buy_log_address.errors.full_messages).to include("Item can't be blank")
+      end
+      it "tokenが空では登録できないこと" do
+        @buy_log_address.token = nil
+        @buy_log_address.valid?
+        expect(@buy_log_address.errors.full_messages).to include("Token can't be blank")
       end
     end
   end
